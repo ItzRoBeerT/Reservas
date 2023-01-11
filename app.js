@@ -32,7 +32,7 @@ yargs.command({
 })
 
 yargs.command({
-    command: 'listarReserva',
+    command: 'listarReservas',
     describe: 'Lista las reservas',
     handler(argv){
         reservas.listarReservas();
