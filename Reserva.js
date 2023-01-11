@@ -11,13 +11,18 @@ const addReserva = (nombre) => {
 
 const removeReserva = (nombre) => {
     const reservas = loadReservas();
-    reservas = reservas.filter(reserva=> reserva.nombre != nombre);
-    saveReservas(reservas);
+    const reservasFiltradas = reservas.filter(res=> res.nombre !== nombre);
+    if (reservas.length == reservasFiltradas.length) {
+        console.log('No se encontro la reserva especificada');
+    }else{
+        console.log('Reservas eliminadas exitosamentes');
+    }
+    saveReservas(reservasFiltradas);
 }
 
 const listarReservas = () => {
-    const reservas = loadReservas()
-    console.log('tus reservas: ')
+    const reservas = loadReservas();
+    console.log('tus reservas: ');
 
     reservas.forEach(reserva => {
         console.log(reserva.nombre);
@@ -31,7 +36,7 @@ const saveReservas = (reservas) =>{
 
 const loadReservas = ()=>{
     try {
-        const dataBuffer = fs.readFileSync('reservas.json');
+        const dataBuffer = fs.readFileSync('./reservas.json');
         const dataJSON = dataBuffer.toString();
         return JSON.parse(dataJSON)
 
