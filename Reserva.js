@@ -26,7 +26,7 @@ const listarReservas = () => {
 
 const saveReservas = (reservas) =>{
     const dataJSON = JSON.stringify(reservas)
-    fs.writeFileSync('reservas.json');
+    fs.writeFileSync('reservas.json',dataJSON);
 }
 
 const loadReservas = ()=>{
